@@ -7,19 +7,15 @@ import re
 # (see https://developer.atlassian.com/display/DOCS/Installing+the+Atlassian+Plugin+SDK for details).
 # Override this with the options parameter.
 options = {
-    'server': 'https://jira.atlassian.com'}
-jira = JIRA(options)
+    'server': 'https://mirantis.jira.com'
+    }
+jira = JIRA(options, basic_auth=())
 
 # Get all projects viewable by anonymous users.
 projects = jira.projects()
 
-# Sort available project keys, then return the second, third, and fourth keys.
-keys = sorted([project.key for project in projects])[2:5]
 
 # Get an issue.
-issue = jira.issue('JRA-1330')
+issue = jira.issue('PROD-9541')
 
-# Find all comments made by Atlassians on this issue.
-atl_comments = [comment for comment in issue.fields.comment.comments
-                if re.search(r'@atlassian.com$', comment.author.emailAddress)]
-print issue.fields.comment.comments
+print issue.fields.summary
