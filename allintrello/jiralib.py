@@ -15,6 +15,10 @@ customfield_11700: epic link
 from jira import JIRA
 from issueparser import parse_descriptions,errors_to_strings, status_to_int, priority_to_int
 
+#add documentation
+#
+#
+
 class jiratask:
     def __init__(self, server_name, user, password, component ='Infrastructure',delivery_team='Infra build'):
         self.server=server_name
