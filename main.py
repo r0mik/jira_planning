@@ -22,3 +22,4 @@ issue = jira.issue('JRA-1330')
 # Find all comments made by Atlassians on this issue.
 atl_comments = [comment for comment in issue.fields.comment.comments
                 if re.search(r'@atlassian.com$', comment.author.emailAddress)]
+print issue.fields.comment.comments
