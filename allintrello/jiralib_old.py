@@ -12,7 +12,7 @@ customfield_16909: health
 customfield_11701: epic name
 customfield_11700: epic link
 """
-from jira import JIRA
+from jiralib_old import JIRA
 from issueparser import parse_descriptions,errors_to_strings, status_to_int, priority_to_int
 
 #add documentation
@@ -46,15 +46,15 @@ class myjira:
             'server': self.server
         }
         self.jira = JIRA(options,basic_auth=(self.user, self.password))# This script shows how to use the client in anonymous mode
-# against jira.atlassian.com.
-from jira import JIRA
+# against jiralib.atlassian.com.
+from jiralib_old import JIRA
 import re
 
 # By default, the client will connect to a JIRA instance started from the Atlassian Plugin SDK
 # (see https://developer.atlassian.com/display/DOCS/Installing+the+Atlassian+Plugin+SDK for details).
 # Override this with the options parameter.
 options = {
-    'server': 'https://jira.atlassian.com'}
+    'server': 'https://jiralib.atlassian.com'}
 jira = JIRA(options)
 
 # Get all projects viewable by anonymous users.

@@ -2,7 +2,7 @@ import ConfigParser
 
 
 # Set the third, optional argument of get to 1 if you wish to use raw mode.
-class config:
+class Config:
     def __init__(self,config_name):
         self.config = ConfigParser.ConfigParser() #add exception if config not found
         self.config.read(config_name)
@@ -10,6 +10,7 @@ class config:
         self.jira_password = None
         self.jira_username = None
         self.delivery_team = None
+        self.component_name= None
 
     def get_access(self,access_section='access'):
 
@@ -19,7 +20,7 @@ class config:
 
     def get_settings(self, jira_section='jira_setttings'):
         self.delivery_team=self.config.get(jira_section, 'delivery_team')
-
+        self.component_name=self.config.get(jira_section,'jira_component')
 
 
 

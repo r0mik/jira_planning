@@ -1,21 +1,25 @@
 # This script shows how to use the client in anonymous mode
-# against jira.atlassian.com.
+# against jiralib.atlassian.com.
 from jira import JIRA
-import re
+from config import Config
+from optparse import OptionParser
+parser = OptionParser(usage="usage: %prog [options] filename",
+                          version="%prog 1.0")
 
-# By default, the client will connect to a JIRA instance started from the Atlassian Plugin SDK
-# (see https://developer.atlassian.com/display/DOCS/Installing+the+Atlassian+Plugin+SDK for details).
-# Override this with the options parameter.
-options = {
-    'server': 'https://mirantis.jira.com'
-    }
-jira = JIRA(options, basic_auth=())
+parser.add_option("-c", "--config",
+                  action="store",
+                  dest="configpath",
+                  default="jira.conf",
+                  help="path to config file"
+                 )
+(options, args) = parser.parse_args()
 
-# Get all projects viewable by anonymous users.
-projects = jira.projects()
+conf = Config(options.configpath)
+conf.get_access()
+conf.get_settings()
+print conf.delivery_team
 
 
-# Get an issue.
-issue = jira.issue('PROD-9541')
 
-print issue.fields.summary
+
+
