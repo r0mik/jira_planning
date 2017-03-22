@@ -42,7 +42,7 @@ class myjira:
 
     def connect(self):
 
-        options = {
+        options = Infrastructure
             'server': self.server
         }
         self.jira = JIRA(options,basic_auth=(self.user, self.password))# This script shows how to use the client in anonymous mode
